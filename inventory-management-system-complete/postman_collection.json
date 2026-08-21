@@ -1,0 +1,94 @@
+{
+  "info": {
+    "_postman_id": "8f2f7e5c-2a6a-4f85-a1f8-5e6f4e0c0001",
+    "name": "Inventory Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "productId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Create Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productName\": \"Laptop\",\n  \"price\": 55000,\n  \"availableStock\": 10\n}"
+        },
+        "url": "{{baseUrl}}/products"
+      }
+    },
+    {
+      "name": "Get Products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/products"
+      }
+    },
+    {
+      "name": "Purchase Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 2\n}"
+        },
+        "url": "{{baseUrl}}/products/purchase"
+      }
+    },
+    {
+      "name": "Restock Product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 5\n}"
+        },
+        "url": "{{baseUrl}}/products/restock"
+      }
+    },
+    {
+      "name": "Product History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/products/{{productId}}/history"
+      }
+    }
+  ]
+}
